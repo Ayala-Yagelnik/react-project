@@ -1,16 +1,20 @@
+import axios from "axios"
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { AppBar, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Toolbar } from '@mui/material';
-import { FormEvent, useReducer, useRef, useState } from 'react';
-import userReducer, { UserContext } from './userReducer';
-import UserAvatar from './UserAvatar';
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { createContext, Dispatch, FormEvent, useEffect, useReducer, useRef, useState } from 'react';
+import userReducer, { Action } from './userReducer';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Close } from '@mui/icons-material';
+import { userType } from "../models/userType";
 
+export const userCotext = createContext<[userType, Dispatch<Action>]>([{} as userType, () => { }]);
 
-const Login = () => {
+const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClose: () => void, actionType: String, onLogin: () => void }) => {
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -22,132 +26,144 @@ const Login = () => {
     boxShadow: 24,
     p: 4,
   };
-  const [user, userDispatch] = useReducer(userReducer,{address:'',email:'',name:'',password:'',phone:''} )
-  const nameRef = useRef<HTMLInputElement>(null)
+  const [open, setOpen] = useState(open1)
+  const [user, userDispatch] = useReducer(userReducer, { id: 0, address: '', email: '', name: '', password: '', phone: '' })
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
-  const addressRef = useRef<HTMLInputElement>(null)
-  const phoneRef = useRef<HTMLInputElement>(null)
 
-  const [open, setOpen] = useState(false);
-  const [login, setLogin] = useState(true);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false),setLogin(false)};
+  useEffect(() => {
+    setOpen(open1);
+  }, [open1]);
 
-  const handleSubmit = (e: FormEvent) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
+  const handleClose = () => {
+    setOpen(false)
+    onClose()
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    userDispatch({
-      type: 'LOGIN_USER',
-      data: {
-        name: nameRef.current?.value || '',
-        email: (emailRef.current?.value || ''),
-        address: (addressRef.current?.value || ''),
-        phone: (phoneRef.current?.value || ''),
-        password: (passwordRef.current?.value || ''),
-      }
-    });
-    handleClose();
+    try {
+      const res = await axios.post(`http://localhost:3000/api/user/${actionType}`,
+        {
+          password: passwordRef.current?.value || "",
+          email: emailRef.current?.value || "",
+        })
+      if (actionType == 'login')
+        userDispatch({
+          type: "UPDATE_USER",
+          data: {
+            id: res.data.user.id,
+            password: passwordRef.current?.value || "",
+            email: emailRef.current?.value || "",
+            name: res.data.user.firstName + res.data.user.lastName || "",
+            address: res.data.user.address || "",
+            phone: res.data.user.phone || "",
+          }
+        });
+      else if (actionType == 'register')
+        userDispatch({
+          type: "CREATE_USER",
+          data: {
+            id: res.data.userId,
+            password: passwordRef.current?.value || "",
+            email: emailRef.current?.value || "",
+            name: "",
+            address: "",
+            phone: "",
+          }
+        });
+      onLogin();
+      handleClose();
+    } catch (error: any) {
+      if (error.status === 422 && actionType == 'register')
+        alert('user already sign up');
+      if (error.status == 401 && actionType == 'login')
+        alert('user is not register');
+    }
+
   }
-     const [showPassword, setShowPassword] = useState(false);
-  
-        const handleClickShowPassword = () => setShowPassword((show) => !show);
-      
-        const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-          event.preventDefault();
-        };
-      
-        const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-          event.preventDefault();
-        };
+
   return (
     <>
-    
-
-      <UserContext.Provider value={{ user:user, userDispatch:userDispatch }}>
-      <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-     {login?(<Button onClick={handleOpen}  sx={{ my: 2, color: 'white', display: 'block' }}>Login</Button>):null} 
-
-     <UserAvatar></UserAvatar>
- 
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }} component={'span'} variant={'body2'}>
-              <Typography variant="h4" gutterBottom >
-                Login
-              </Typography>
-              <form onSubmit={handleSubmit}>
-                <TextField
-                  inputRef={nameRef}
-                  name="name"
-                  label="Name"
-                  fullWidth
-                  margin="normal"
-                />
-                <TextField
-                  required
-                  inputRef={emailRef}
-                  name="email"
-                  label="Email"
-                  fullWidth
-                  margin="normal"
-                />
-             <FormControl fullWidth sx={{/* m: 1, width: '25ch'*/ }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={
-                    showPassword ? 'hide the password' : 'display the password'
-                  }
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-                >
-                 {showPassword ? <Visibility /> :<VisibilityOff /> } 
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-                <TextField
-                  inputRef={phoneRef}
-                  name="phone"
-                  label="Phone"
-                  fullWidth
-                  margin="normal"
-                />
-                <TextField
-                  inputRef={addressRef}
-                  name="address"
-                  label="Address"
-                  fullWidth
-                  margin="normal"
-                />
-                <Button type="submit" variant="contained" color="primary" fullWidth>
-                  Login
-                </Button>
-              </form>
-
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <IconButton
+            onClick={handleClose}
+            sx={{
+              position: 'absolute',
+              right: 16,
+              top: 16,
+              bgcolor: 'red', // רקע אדום
+              color: 'white', // צבע טקסט לבן
+              '&:hover': {
+                bgcolor: 'darkred', // צבע רקע כהה יותר כשמעבירים מעל
+              },
+            }}
+          >
+            <Close />
+          </IconButton>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }} component={'span'} variant={'body2'}>
+            <Typography variant="h4" gutterBottom >
+              Login
             </Typography>
-          </Box>
-        </Modal>
-        </Toolbar>
-      </AppBar>
-    </Box>
-  
-      </UserContext.Provider>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                required
+                inputRef={emailRef}
+                name="email"
+                label="Email"
+                fullWidth
+                margin="normal"
+              />
+              <FormControl fullWidth sx={{/* m: 1, width: '25ch'*/ }} variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showPassword ? 'text' : 'password'}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label={
+                          showPassword ? 'hide the password' : 'display the password'
+                        }
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        onMouseUp={handleMouseUpPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  name="password"
+                  label="Password"
+                />
+              </FormControl>
+              <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+                Login
+              </Button>
+            </form>
+
+          </Typography>
+        </Box>
+      </Modal>
     </>
   );
 

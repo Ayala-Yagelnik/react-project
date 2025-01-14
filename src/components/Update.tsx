@@ -1,45 +1,53 @@
 import { Modal, Box, Typography, TextField, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material";
-import React, { useReducer, useState, FormEvent, useRef, useContext } from "react";
-import userReducer, { UserContext } from "./userReducer";
-
+import React, {  useState, FormEvent, useRef, useContext } from "react";
+import { userCotext } from "./Login"
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import axios from "axios";
 
 
 
 const Update = () => {
   // const [user, userDispatch] = useReducer(userReducer,{address:'',email:'',name:'',password:'',phone:''} )
-
+  const nameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+  const addressRef = useRef<HTMLInputElement>(null)
+  const phoneRef = useRef<HTMLInputElement>(null)
+  const [user, userDispatch] = useContext(userCotext);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  // const [error, setError] = useState(false);
-  const handleClose = () => { setOpen(false); /*setError(false);*/ }
-  const userContext = useContext(UserContext)
-
-  // const userContext = useContext(UserContext);
-  const { userDispatch } = userContext;
-
-
-  const handleSubmit = (e: FormEvent) => {
+  const handleClose = () => { setOpen(false);  }
+ 
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    // if (passwordRef.current?.value !== userContext.user.password) { // החלף את "הסיסמה הנכונה" בסיסמה האמיתית
-    //   setError(true);
-    //   return;
-    // }
-    // else{
-    //   setError(false);
-    // }
-    userDispatch({
-      type: 'UPDATE_USER',
-      data: {
-        name: nameRef.current?.value || '',
-        email: (emailRef.current?.value || ''),
-        address: (addressRef.current?.value || ''),
-        phone: (phoneRef.current?.value || ''),
-        password: (passwordRef.current?.value || ''),
-      }
-    });
-    handleClose();
+    try {
+      const res = await axios.put('http://localhost:3000/api/user',
+        {
+          password: passwordRef.current?.value || user.password,
+          name: nameRef.current?.value || user.name,
+          email: emailRef.current?.value || user.email,
+          address: addressRef.current?.value || user.address,
+          phone: phoneRef.current?.value || user.phone,
+        },
+        { headers: { 'user-id': user.id + '' } }
+      )
+      userDispatch({
+        type: 'UPDATE_USER',
+        data: {
+          name: res.data.firstName + ' ' + res.data.lastName,
+          password: res.data.password,
+          email: res.data.email,
+          address: res.data.address,
+          phone: res.data.phone,
+        }
+      });
+      handleClose();
+    } catch (e: any) {
+      if (e.status === 404)
+        alert('user not found');
+    }
+
   }
 
   const [showPassword, setShowPassword] = useState(false);
@@ -64,12 +72,8 @@ const Update = () => {
     boxShadow: 24,
     p: 4,
   };
-  const nameRef = useRef<HTMLInputElement>(null)
-  const emailRef = useRef<HTMLInputElement>(null)
-  const passwordRef = useRef<HTMLInputElement>(null)
-  const addressRef = useRef<HTMLInputElement>(null)
-  const phoneRef = useRef<HTMLInputElement>(null)
-
+  
+  console.log(user.name)
   return (
     <>
       <Button variant="text" sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpen}>
@@ -93,8 +97,7 @@ const Update = () => {
                 label="Name"
                 fullWidth
                 margin="normal"
-                defaultValue={userContext.user.name}
-
+                defaultValue={user.name}
               />
               <TextField
                 required
@@ -103,11 +106,9 @@ const Update = () => {
                 label="Email"
                 fullWidth
                 margin="normal"
-                defaultValue={userContext.user.email}
-
+                defaultValue={user.email}
               />
-           
-              <FormControl fullWidth margin="normal" sx={{/* m: 1, width: '25ch'*/ }} variant="outlined">
+              <FormControl fullWidth margin="normal" variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-password"
@@ -123,25 +124,21 @@ const Update = () => {
                         onMouseUp={handleMouseUpPassword}
                         edge="end"
                       >
-                        {showPassword ?<Visibility />: <VisibilityOff />  }
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
                   }
                   label="Password"
+                  name='password'
                 />
-
               </FormControl>
-
-
-
               <TextField
                 inputRef={phoneRef}
                 name="phone"
                 label="Phone"
                 fullWidth
                 margin="normal"
-                defaultValue={userContext.user.phone}
-
+                defaultValue={user.phone}
               />
               <TextField
                 inputRef={addressRef}
@@ -149,27 +146,20 @@ const Update = () => {
                 label="Address"
                 fullWidth
                 margin="normal"
-                defaultValue={userContext.user.address}
-
+                defaultValue={user.address}
               />
               <Button type="submit" variant="contained" color="primary" fullWidth>
                 SAVE
               </Button>
             </form>
-
           </Typography>
         </Box>
       </Modal>
-
-
     </>
   )
-
-
-
-
 }
 
 export default Update
+
 
 
