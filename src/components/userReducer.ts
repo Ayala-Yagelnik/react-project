@@ -9,7 +9,7 @@ export type Action = {
     data: Partial<userType> & { email: String }
 } | {
     type: 'DELETE_USER',
-    data: String
+    data: string
 }
 
 export const UserContext = createContext<{
@@ -35,10 +35,12 @@ export default (state: userType, action: Action): userType => {
         case 'UPDATE_USER':
             return {
                 ...state,
-                password: action.data.password ? action.data.password : state.password,
-                name: action.data.name ? action.data.name : state.name,
-                phone: action.data.phone ? action.data.phone : state.phone,
-                address: action.data.address ? action.data.address : state.address,
+                // email:action.data.email?action.data.email:state.email,
+                // password: action.data.password ? action.data.password : state.password,
+                // name: action.data.name ? action.data.name : state.name,
+                // phone: action.data.phone ? action.data.phone : state.phone,
+                // address: action.data.address ? action.data.address : state.address,
+                ...action.data
             }
         case 'DELETE_USER':
             return { ...state }

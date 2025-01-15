@@ -1,20 +1,31 @@
 import { Modal, Box, Typography, TextField, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material";
-import React, {  useState, FormEvent, useRef, useContext } from "react";
-import { userCotext } from "./Login"
+import React, {  useState, FormEvent, useRef, useContext, useEffect } from "react";
+import { userCotext } from "./Nav"
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
+import { UserContext } from "./userReducer";
 
 
 
 const Update = () => {
+
+   const { user, userDispatch } = useContext(UserContext);
+  
+    
+  useEffect(() => {
+      console.log(user); // בדוק כאן אם אתה רואה את הנתונים
+  }, [user]); // הוסף dependency כדי לבדוק שינוי ב-user
+
+
+
   // const [user, userDispatch] = useReducer(userReducer,{address:'',email:'',name:'',password:'',phone:''} )
   const nameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
   const addressRef = useRef<HTMLInputElement>(null)
   const phoneRef = useRef<HTMLInputElement>(null)
-  const [user, userDispatch] = useContext(userCotext);
+  // const [user, userDispatch] = useContext(userCotext);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => { setOpen(false);  }
@@ -22,6 +33,7 @@ const Update = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     try {
+      console.log(user);
       const res = await axios.put('http://localhost:3000/api/user',
         {
           password: passwordRef.current?.value || user.password,
@@ -32,10 +44,11 @@ const Update = () => {
         },
         { headers: { 'user-id': user.id + '' } }
       )
+    
       userDispatch({
         type: 'UPDATE_USER',
         data: {
-          name: res.data.firstName + ' ' + res.data.lastName,
+          name: res.data.name ,
           password: res.data.password,
           email: res.data.email,
           address: res.data.address,
@@ -73,7 +86,18 @@ const Update = () => {
     p: 4,
   };
   
-  console.log(user.name)
+  useEffect(() => {
+    if (user) {
+      if (nameRef.current) nameRef.current.value = user.name;
+      if (emailRef.current) emailRef.current.value = user.email;
+      if (phoneRef.current) phoneRef.current.value = user.phone;
+      if (addressRef.current) addressRef.current.value = user.address;
+      if (passwordRef.current) passwordRef.current.value = user.password; // אם את רוצה גם להציג את הסיסמה
+    }
+  }, [user]);
+  
+
+  console.log(user)
   return (
     <>
       <Button variant="text" sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpen}>
@@ -130,6 +154,7 @@ const Update = () => {
                   }
                   label="Password"
                   name='password'
+                  inputRef={passwordRef}
                 />
               </FormControl>
               <TextField

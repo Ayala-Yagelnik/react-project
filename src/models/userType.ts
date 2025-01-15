@@ -1,9 +1,9 @@
 export type userType = {
     id:number,
-    name: String,
-    email: String,
-    password: String,
-    address: String,
-    phone: String
+    name: string,
+    email: string,
+    password: string,
+    address: string,
+    phone: string
 }
 

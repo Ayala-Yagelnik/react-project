@@ -4,14 +4,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
-import { createContext, Dispatch, FormEvent, useEffect, useReducer, useRef, useState } from 'react';
-import userReducer, { Action } from './userReducer';
+import { FormEvent, useContext, useEffect, useReducer, useRef, useState } from 'react';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Close } from '@mui/icons-material';
-import { userType } from "../models/userType";
+import { userCotext } from "./Nav";
+import { UserContext } from "./userReducer";
 
-export const userCotext = createContext<[userType, Dispatch<Action>]>([{} as userType, () => { }]);
 
 const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClose: () => void, actionType: String, onLogin: () => void }) => {
 
@@ -26,8 +25,9 @@ const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClos
     boxShadow: 24,
     p: 4,
   };
+  const { user, userDispatch } = useContext(UserContext);
+  // const [user, userDispatch] = useContext(userCotext);
   const [open, setOpen] = useState(open1)
-  const [user, userDispatch] = useReducer(userReducer, { id: 0, address: '', email: '', name: '', password: '', phone: '' })
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
@@ -67,7 +67,7 @@ const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClos
             id: res.data.user.id,
             password: passwordRef.current?.value || "",
             email: emailRef.current?.value || "",
-            name: res.data.user.firstName + res.data.user.lastName || "",
+            name: res.data.user.name || "",
             address: res.data.user.address || "",
             phone: res.data.user.phone || "",
           }
@@ -152,6 +152,7 @@ const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClos
                       </IconButton>
                     </InputAdornment>
                   }
+                  inputRef={passwordRef}
                   name="password"
                   label="Password"
                 />
