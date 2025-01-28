@@ -36,15 +36,15 @@ const UserAvatar = () => {
 
     const { user } = useContext(UserContext);
 
-    const userName = user && user.name ? user.name : 'U'; 
+    const userName = user && user.firstName ? user.firstName : 'U'; 
     return (
         <>
             <Box display="flex" flexDirection="row" alignItems="center">
             <Avatar 
-            {...stringAvatar(user.email || ''+ user.name)}
+            {...stringAvatar(user.email || ''+ user.firstName)}
             // sx={{ bgcolor: "#ff0071" }}
             >{userName.charAt(0)}</Avatar>
-            {user.name && (
+            {user.firstName && (
                 <Typography margin={'10px'} variant="subtitle1" component="div">
                     {userName}
                 </Typography>

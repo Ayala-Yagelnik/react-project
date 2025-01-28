@@ -12,7 +12,8 @@ const Update = () => {
     console.log(user); 
   }, [user]); 
 
-  const nameRef = useRef<HTMLInputElement>(null)
+  const firstNameRef = useRef<HTMLInputElement>(null)
+  const lastNameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
   const addressRef = useRef<HTMLInputElement>(null)
@@ -23,11 +24,11 @@ const Update = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     try {
-      console.log(user);
       const res = await axios.put('http://localhost:3000/api/user',
         {
           password: passwordRef.current?.value || user.password,
-          name: nameRef.current?.value || user.name,
+          firstName: firstNameRef.current?.value || user.firstName,
+          lastName: lastNameRef.current?.value || user.lastName,
           email: emailRef.current?.value || user.email,
           address: addressRef.current?.value || user.address,
           phone: phoneRef.current?.value || user.phone,
@@ -36,13 +37,14 @@ const Update = () => {
       )
       userDispatch({
         type: 'UPDATE_USER',
-        data: {
-          name: res.data.name,
-          password: res.data.password,
-          email: res.data.email,
-          address: res.data.address,
-          phone: res.data.phone,
-        }
+        data:res.data
+        //  {
+        //   name: res.data.name,
+        //   password: res.data.password,
+        //   email: res.data.email,
+        //   address: res.data.address,
+        //   phone: res.data.phone,
+        // }
       });
       handleClose();
     } catch (e: any) {
@@ -71,11 +73,12 @@ const Update = () => {
   };
   useEffect(() => {
     if (user) {
-      if (nameRef.current) nameRef.current.value = user.name;
+      if (firstNameRef.current) firstNameRef.current.value = user.firstName;
+      if (lastNameRef.current) lastNameRef.current.value = user.lastName;
       if (emailRef.current) emailRef.current.value = user.email;
       if (phoneRef.current) phoneRef.current.value = user.phone;
       if (addressRef.current) addressRef.current.value = user.address;
-      if (passwordRef.current) passwordRef.current.value = user.password; // אם את רוצה גם להציג את הסיסמה
+      if (passwordRef.current) passwordRef.current.value = user.password; 
     }
   }, [user]);
 
@@ -97,12 +100,20 @@ const Update = () => {
             </Typography>
             <form onSubmit={handleSubmit}>
               <TextField
-                inputRef={nameRef}
+                inputRef={firstNameRef}
                 name="name"
                 label="Name"
                 fullWidth
                 margin="normal"
-                defaultValue={user.name}
+                defaultValue={user.firstName}
+              />
+                 <TextField
+                inputRef={lastNameRef}
+                name="name"
+                label="Name"
+                fullWidth
+                margin="normal"
+                defaultValue={user.lastName}
               />
               <TextField
                 required

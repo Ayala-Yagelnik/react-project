@@ -29,7 +29,8 @@ const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClos
         data: {
           id: actionType === 'login' ? res.data.user.id : res.data.userId,
           password: passwordRef.current?.value || "", email: emailRef.current?.value || "",
-          name: actionType === 'login' ? res.data.user.name || "" : "",
+          firstName: actionType === 'login' ? res.data.user.firstName || "" : "",
+          lastName: actionType === 'login' ? res.data.user.lastName || "" : "",
           address: actionType === 'login' ? res.data.user.address || "" : "",
           phone: actionType === 'login' ? res.data.user.phone || "" : "",
         }

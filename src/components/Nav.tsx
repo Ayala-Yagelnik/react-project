@@ -13,7 +13,8 @@ export const userCotext = createContext<[userType, Dispatch<Action>]>([{} as use
 const initialState: userType = {
   address: '',
   email: '',
-  name: '',
+  firstName: '',
+  lastName: '',
   password: '',
   phone: '',
   id: 0

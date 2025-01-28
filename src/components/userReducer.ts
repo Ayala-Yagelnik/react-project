@@ -19,7 +19,8 @@ export const UserContext = createContext<{
     user: {
         address: '',
         email: '',
-        name: '',
+        firstName: '',
+        lastName: "",
         password: '',
         phone: '',
         id: 0
