@@ -3,8 +3,6 @@ import Nav from "./Nav"
 
 const AppLayout = () => {
     return (<>
-        {/* <Outlet /> */}
-        {/* \\\\\///// */}
         <Nav></Nav>
         <Outlet />
     </>)

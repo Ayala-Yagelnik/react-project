@@ -1,20 +1,15 @@
-
-import About from './components/about'
-import Nav from './components/Nav'
-import ResponsiveAppBar from './components/Nav'
-import AppLayout from './components/AppLayout'
-import Home from './components/Home'
-import Login from './components/Login'
 import { router } from './Router'
 import { RouterProvider } from 'react-router'
+import store from './store/store'
+import { Provider } from 'react-redux'
 
 
 function App() {
   return (<>
-    
+    <Provider store={store}>
       <RouterProvider router={router} />
-
-        </>
+    </Provider>
+  </>
   )
 }
 

@@ -10,7 +10,6 @@ import Login from './Login';
 import { userType } from '../models/userType';
 export const userCotext = createContext<[userType, Dispatch<Action>]>([{} as userType, () => { }]);
 
-
 const initialState: userType = {
   address: '',
   email: '',
@@ -20,21 +19,15 @@ const initialState: userType = {
   id: 0
 };
 
-
 const Nav = () => {
-  // const [user, userDispatch] = useReducer(userReducer, { id: 0, address: '', email: '', name: '', password: '', phone: '' })
   const [login, setLogin] = useState(false);
   const [signin, setSignin] = useState(false);
   const [signup, setSignup] = useState(false);
-
   const [state, dispatch] = useReducer(userReducer, initialState);
 
-
-  
   return (
     <>
-      {/* <UserContext.Provider value={{ user, userDispatch }}> */}
-      <UserContext.Provider value={{ user: state, userDispatch: dispatch }}>
+      <UserContext value={{ user: state, userDispatch: dispatch }}>
         <AppBar position="static">
           <Toolbar style={{ justifyContent: 'flex-end' }}>
             <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
@@ -50,6 +43,7 @@ const Nav = () => {
             </Box>
             <Tab component={Link} to="/" label="Home" />
             <Tab component={Link} to="/about" label="About" />
+            <Tab component={Link} to="/recipes" label="Recipes" />
           </Toolbar>
         </AppBar>
         {<Login
@@ -60,8 +54,7 @@ const Nav = () => {
           }}
           actionType={signin ? 'login' : 'register'}
           onLogin={() => setLogin(true)}></Login>}
-      {/* </UserContext.Provider> */}
-      </UserContext.Provider>
+      </UserContext>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material"
 
-const error=()=>{
+const Error=()=>{
     const imageUrl = './4.jpg';
 return(
     <Box
@@ -24,8 +24,7 @@ return(
         
       </Typography>
       <img src={imageUrl} alt="The site is under construction. Please check back later" style={{ height: '80vh' }} />
-      
     </Box>
 )
 }
-export default error
+export default Error

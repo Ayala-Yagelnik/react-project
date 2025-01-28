@@ -1,35 +1,25 @@
 import { Modal, Box, Typography, TextField, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton, Button } from "@mui/material";
-import React, {  useState, FormEvent, useRef, useContext, useEffect } from "react";
-import { userCotext } from "./Nav"
+import React, { useState, FormEvent, useRef, useContext, useEffect } from "react";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
 import { UserContext } from "./userReducer";
 
-
-
 const Update = () => {
 
-   const { user, userDispatch } = useContext(UserContext);
-  
-    
+  const { user, userDispatch } = useContext(UserContext);
   useEffect(() => {
-      console.log(user); // בדוק כאן אם אתה רואה את הנתונים
-  }, [user]); // הוסף dependency כדי לבדוק שינוי ב-user
+    console.log(user); 
+  }, [user]); 
 
-
-
-  // const [user, userDispatch] = useReducer(userReducer,{address:'',email:'',name:'',password:'',phone:''} )
   const nameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
   const addressRef = useRef<HTMLInputElement>(null)
   const phoneRef = useRef<HTMLInputElement>(null)
-  // const [user, userDispatch] = useContext(userCotext);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => { setOpen(false);  }
- 
+  const handleClose = () => { setOpen(false); }
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     try {
@@ -44,11 +34,10 @@ const Update = () => {
         },
         { headers: { 'user-id': user.id + '' } }
       )
-    
       userDispatch({
         type: 'UPDATE_USER',
         data: {
-          name: res.data.name ,
+          name: res.data.name,
           password: res.data.password,
           email: res.data.email,
           address: res.data.address,
@@ -60,17 +49,12 @@ const Update = () => {
       if (e.status === 404)
         alert('user not found');
     }
-
   }
-
   const [showPassword, setShowPassword] = useState(false);
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
-
   const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
@@ -85,7 +69,6 @@ const Update = () => {
     boxShadow: 24,
     p: 4,
   };
-  
   useEffect(() => {
     if (user) {
       if (nameRef.current) nameRef.current.value = user.name;
@@ -95,9 +78,7 @@ const Update = () => {
       if (passwordRef.current) passwordRef.current.value = user.password; // אם את רוצה גם להציג את הסיסמה
     }
   }, [user]);
-  
 
-  console.log(user)
   return (
     <>
       <Button variant="text" sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpen}>
