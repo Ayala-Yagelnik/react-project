@@ -1,7 +1,8 @@
 
 export type Recipe = {
-    id: number,
+    id?: number,
     title: string,
     description:string,
-    ingredients?:string[]
+    ingredients:string[],
+    userId?:number
 }

@@ -3,7 +3,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import AppLayout from "./components/AppLayout";
 import RecipeList from "./components/RecipeList";
-import Error from "./components/error";
+import Error from "./components/Error";
 
 
 

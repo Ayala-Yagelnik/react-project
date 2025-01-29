@@ -47,14 +47,14 @@ const Nav = () => {
             <Tab component={Link} to="/recipes" label="Recipes" />
           </Toolbar>
         </AppBar>
-        {<Login
+        <Login
           open1={signin || signup}
           onClose={() => {
             setSignin(false)
             setSignup(false)
           }}
           actionType={signin ? 'login' : 'register'}
-          onLogin={() => setLogin(true)}></Login>}
+          onLogin={() => setLogin(true)}></Login>
       </UserContext>
     </>
   );

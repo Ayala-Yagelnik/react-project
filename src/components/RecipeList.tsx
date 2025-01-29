@@ -1,53 +1,67 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreType } from "../models/storeType";
-import { fetchData, addRecipe } from "../store/recipeSlice";
-import { Recipe } from "../models/recipeType";
 import AddRecipe from "./AddRecipe";
-import { Button } from "@mui/material";
+import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { AppDispatch } from "../store/store";
+import { fetchRecipes } from "../store/recipeSlice";
+import { Recipe } from "../models/recipeType";
+import RecipeCard from "./RecipeCard";
+import Grid from "@mui/material/Grid2";
 
-const RecipeList=()=>{
-const [open,setOpen]=useState('false')
+const RecipeList = () => {
+    const [add, setAdd] = useState(false);
+    const [openCard, setOpenCard] = useState(false);
+    const [recipe, setRecipe] = useState({} as Recipe);
     const { recipes: { list: recipesList } } = useSelector((store: StoreType) => store);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
-        dispatch(fetchData())
-    }, [])
-    const [count, setCount] = useState(0)
-    const titleRef = useRef<HTMLInputElement>(null)
-    const descriptionRef = useRef<HTMLInputElement>(null)
-//     const handleAdd=(title:string)=>{
-//         setCount(count+1)
-//         const  nRecipe:Recipe={
-//             id:count,
-//             title,
-//             description,
-//             ingredients:[]
-//         }
-            
-//             dispatch(addRecipe(nRecipe));
-// };
-  
-// return(
-//     <>
-//     <div>
-//         {recipesList.map(r => <div key={r.id}>{r.title}</div>)}
-//         <button onClick={() =>))}
-//             }>add</button>
-//         <input ref={titleRef} placeholder='title'/>
-//         <input ref={descriptionRef} placeholder='description'/>
-//     </div>
-// </>
-// )
-return(
-    <>
-     <div>
-         {recipesList.map(r => <div key={r.id}>{r.title}</div>)}
-         <Button onClick={()=>{setOpen('true')}}>add recipe</Button>
-     </div>
-  { open&& <AddRecipe></AddRecipe>}
-    </>
-)
+        dispatch(fetchRecipes())
+    }, [dispatch])
+    const handleOpenCard = (recipe: Recipe) => {
+        setOpenCard(true);
+        setRecipe(recipe)
+    };
+    return (
+        <> 
+          <Button sx={{margin:'10px'}} onClick={() => { setAdd(true) }}>add recipe</Button>
+            <Grid container sx={{marginTop:'10px'}} size={{ xs: 12,sm:8, md: 4,lg:2 }} spacing={2} 
+            >
+            {recipesList.map(r =>
+                <> <Grid key={r.id}>
+                <Card sx={{ height: '250px', display: 'flex', flexDirection: 'column' }}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            height="100"
+                            image="/static/images/cards/contemplative-reptile.jpg"
+                            alt="green iguana" />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {r.title}
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                {r.description}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" color="primary" onClick={() => { handleOpenCard(r) }}>
+                            I want to do it!
+                        </Button>
+                    </CardActions>
+                </Card>
+                </Grid>
+                </>
+            )} 
+              </Grid>
+        
+          
+         
+            <RecipeCard open={openCard} recipe={recipe} ></RecipeCard>
+             <AddRecipe open={add} ></AddRecipe>
+        </>
+    )
 
 }
 export default RecipeList
