@@ -1,35 +1,22 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { createContext, Dispatch, useReducer, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { Box, Tab } from '@mui/material';
 import UserAvatar from './UserAvatar';
-import userReducer, { Action, UserContext } from './userReducer';
 import Login from './Login';
-import { userType } from '../models/userType';
-export const userCotext = createContext<[userType, Dispatch<Action>]>([{} as userType, () => { }]);
 
-const initialState: userType = {
-  address: '',
-  email: '',
-  firstName: '',
-  lastName: '',
-  password: '',
-  phone: '',
-  id: 0
-};
+
 
 const Nav = () => {
   const [login, setLogin] = useState(false);
   const [signin, setSignin] = useState(false);
   const [signup, setSignup] = useState(false);
-  const [state, dispatch] = useReducer(userReducer, initialState);
 
   return (
     <>
-      <UserContext value={{ user: state, userDispatch: dispatch }}>
-        <AppBar position="static">
+        <AppBar position="sticky" >
           <Toolbar style={{ justifyContent: 'flex-end' }}>
             <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
               {!login
@@ -55,7 +42,6 @@ const Nav = () => {
           }}
           actionType={signin ? 'login' : 'register'}
           onLogin={() => setLogin(true)}></Login>
-      </UserContext>
     </>
   );
 }

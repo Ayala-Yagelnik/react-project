@@ -4,5 +4,8 @@ export type Recipe = {
     title: string,
     description:string,
     ingredients:string[],
-    userId?:number
+    instructions:string,
+    authorId:number,
+    image?:string,
+
 }

@@ -18,17 +18,11 @@ export const fetchRecipes = createAsyncThunk('recipes/fetch',
 export const addRecipe = createAsyncThunk('recipes/add',
     async (recipe: Recipe, thunkAPI) => {
         try {
-            console.log('in async thunk add recipe');
-            console.log(recipe);
-
             const response = await axios.post('http://localhost:3000/api/recipes',
-                {
-                    title: recipe.title,
-                    description: "new recipe with id " + recipe.id + " description :" + recipe.description
-                },
+               recipe,
                 {
                     headers: {
-                        'user-id': 1738087528269
+                        'user-id': recipe.authorId
                     }
                 }
             )
@@ -44,8 +38,7 @@ export const addRecipe = createAsyncThunk('recipes/add',
 const recipesSlice = createSlice({
     name: 'recipes',
     initialState: { list: [] as Recipe[], loading: true },
-    reducers: {
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchRecipes.fulfilled,
@@ -61,11 +54,13 @@ const recipesSlice = createSlice({
             .addCase(addRecipe.fulfilled,
                 (state, action) => {
                     console.log('fulfilled');
-                    state.list = [...state.list, { ...action.payload }]
+                    state.list .push(action.payload.recipe )
                 })
             .addCase(addRecipe.rejected,
-                (state) => {
-                    console.log('failed');
+                (_,action) => {
+                    if (action.payload === 403) {
+                        alert("You are not allowed to add a recipe");
+                    }
                 }
             )
     }

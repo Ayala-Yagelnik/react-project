@@ -5,12 +5,9 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Close } from '@mui/icons-material';
 import { UserContext } from "./userReducer";
+import { popupStyle } from "../styles/popup";
 
 const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClose: () => void, actionType: String, onLogin: () => void }) => {
-  const style = {
-    position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400,
-    bgcolor: 'background.paper', border: '2px solid #000', boxShadow: 24, p: 4,
-  };
   const { userDispatch } = useContext(UserContext);
   const [open, setOpen] = useState(open1), emailRef = useRef<HTMLInputElement>(null), passwordRef = useRef<HTMLInputElement>(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +41,7 @@ const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClos
 
   return (
     <Modal open={open} onClose={handleClose}>
-      <Box sx={style}>
+      <Box sx={popupStyle}>
         <IconButton onClick={handleClose} sx={{ position: 'absolute', right: 16, top: 16, bgcolor: 'red', color: 'white', '&:hover': { bgcolor: 'darkred' } }}>
           <Close />
         </IconButton>

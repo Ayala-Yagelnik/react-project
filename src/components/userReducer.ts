@@ -6,7 +6,7 @@ export type Action = {
     data: userType
 } | {
     type: 'UPDATE_USER',
-    data: Partial<userType> & { email: String }
+    data: Partial<userType>
 } | {
     type: 'DELETE_USER',
     data: string
@@ -29,7 +29,6 @@ export const UserContext = createContext<{
 });
 
 export default (state: userType, action: Action): userType => {
-    console.log(action.data)
     switch (action.type) {
         case 'CREATE_USER':
             return action.data;

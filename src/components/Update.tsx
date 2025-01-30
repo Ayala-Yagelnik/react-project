@@ -4,14 +4,11 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
 import { UserContext } from "./userReducer";
+import { popupStyle } from "../styles/popup";
 
 const Update = () => {
 
   const { user, userDispatch } = useContext(UserContext);
-  useEffect(() => {
-    console.log(user); 
-  }, [user]); 
-
   const firstNameRef = useRef<HTMLInputElement>(null)
   const lastNameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
@@ -38,13 +35,6 @@ const Update = () => {
       userDispatch({
         type: 'UPDATE_USER',
         data:res.data
-        //  {
-        //   name: res.data.name,
-        //   password: res.data.password,
-        //   email: res.data.email,
-        //   address: res.data.address,
-        //   phone: res.data.phone,
-        // }
       });
       handleClose();
     } catch (e: any) {
@@ -60,17 +50,7 @@ const Update = () => {
   const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+ 
   useEffect(() => {
     if (user) {
       if (firstNameRef.current) firstNameRef.current.value = user.firstName;
@@ -93,7 +73,7 @@ const Update = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={popupStyle}>
           <Typography id="modal-modal-description" sx={{ mt: 2 }} component={'span'} variant={'body2'}>
             <Typography variant="h4" gutterBottom >
               UPDATE

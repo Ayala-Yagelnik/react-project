@@ -1,5 +1,5 @@
 import { Avatar, Box, Typography } from "@mui/material"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { UserContext } from "./userReducer"
 import Update from "./Update"
 
@@ -19,9 +19,6 @@ function stringToColor(string: string) {
   }
   
   function stringAvatar(name: string) {
-    console.log("name");
-    console.log(name);
-
     let x;
         x = `${name.split(' ')[0][0]}${name.split(' ')[1] ? name.split(' ')[1][0] : ''}`
     return {
@@ -35,7 +32,9 @@ function stringToColor(string: string) {
 const UserAvatar = () => {
 
     const { user } = useContext(UserContext);
-
+   useEffect(()=>{
+        console.log(user.id)
+    },[user])
     const userName = user && user.firstName ? user.firstName : 'U'; 
     return (
         <>
