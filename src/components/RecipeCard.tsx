@@ -1,8 +1,7 @@
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, List, ListItem, ListItemIcon, Modal, Typography } from "@mui/material"
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, List, ListItem, ListItemIcon, Typography } from "@mui/material"
 import { Recipe } from "../models/recipeType"
-import { Check, Favorite, Label, MoreVert, Share } from "@mui/icons-material"
+import { Favorite, Label, MoreVert, Share } from "@mui/icons-material"
 import { red } from "@mui/material/colors"
-import { useEffect, useState } from "react";
 
 const RecipeCard = ({  recipe }: {  recipe: Recipe }) => {
   // const [openCard, setOpenCard] = useState(open)

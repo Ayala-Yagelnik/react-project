@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreType } from "../models/storeType";
 // import AddRecipe from "./AddRecipe";
-import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { AppDispatch } from "../store/store";
 import { fetchRecipes } from "../store/recipeSlice";
 import { Recipe } from "../models/recipeType";
@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid2";
 import { UserContext } from "./userReducer"
 import AddRecipe from "./AddRecipe";
 import RecipeCard from "./RecipeCard";
-import { PageContainer } from "@toolpad/core/PageContainer";
+
 
 
 const RecipeList = () => {
@@ -21,7 +21,6 @@ const RecipeList = () => {
         console.log(user.id)
     }, [user])
     const [add, setAdd] = useState(false);
-    const [openCard, setOpenCard] = useState(false);
     const [recipe, setRecipe] = useState<Recipe | null>(null);
     const recipesList = useSelector((store: StoreType) => store.recipes.list);
 
@@ -34,7 +33,6 @@ const RecipeList = () => {
     }, [dispatch]);
 
     const handleOpenCard = (recipe: Recipe) => {
-        setOpenCard(true);
         setRecipe(recipe)
     };
     return (
