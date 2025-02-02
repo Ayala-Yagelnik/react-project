@@ -10,9 +10,7 @@ return(
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        // backgroundColor: '#f8d7da',
         color: 'red',
-        // padding: '20px',
         borderRadius: '5px',
         boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
       }}

@@ -1,9 +1,11 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import recipesSlice from "./recipeSlice";
+import userSlice from "./userSlice";
 
 const store = configureStore({
     reducer: combineSlices(
-        recipesSlice
+        recipesSlice,
+        userSlice
     ),
 });
 

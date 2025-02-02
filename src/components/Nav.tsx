@@ -7,8 +7,6 @@ import { Box, Tab } from '@mui/material';
 import UserAvatar from './UserAvatar';
 import Login from './Login';
 
-
-
 const Nav = () => {
   const [login, setLogin] = useState(false);
   const [signin, setSignin] = useState(false);

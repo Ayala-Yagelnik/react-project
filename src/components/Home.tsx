@@ -11,9 +11,6 @@ import { PageContainer } from '@toolpad/core/PageContainer';
 
 
 const Home = () => {
-
-  
-
     return (<>
         <Stack
             direction="column"
@@ -29,48 +26,43 @@ const Home = () => {
             </Divider>
             <h3>hello to our site!!</h3>
         </Stack>
-
-
-        
-            <PageContainer>
-                <Grid container spacing={1}>
-                    <Grid size={5} />
-                    <Grid size={12}>
-                        <Skeleton height={14} />
-                    </Grid>
-                    <Grid size={12}>
-                        <Skeleton height={14} />
-                    </Grid>
-                    <Grid size={4}>
-                        <Skeleton height={100} />
-                    </Grid>
-                    <Grid size={8}>
-                        <Skeleton height={100} />
-                    </Grid>
-
-                    <Grid size={12}>
-                        <Skeleton height={150} />
-                    </Grid>
-                    <Grid size={12}>
-                        <Skeleton height={14} />
-                    </Grid>
-
-                    <Grid size={3}>
-                        <Skeleton height={100} />
-                    </Grid>
-                    <Grid size={3}>
-                        <Skeleton height={100} />
-                    </Grid>
-                    <Grid size={3}>
-                        <Skeleton height={100} />
-                    </Grid>
-                    <Grid size={3}>
-                        <Skeleton height={100} />
-                    </Grid>
+        <PageContainer sx={{width:"100%"}}>
+            <Grid container spacing={1}>
+                <Grid size={5} />
+                <Grid size={12}>
+                    <Skeleton height={14} />
                 </Grid>
-            </PageContainer>
-   
+                <Grid size={12}>
+                    <Skeleton height={14} />
+                </Grid>
+                <Grid size={4}>
+                    <Skeleton height={100} />
+                </Grid>
+                <Grid size={8}>
+                    <Skeleton height={100} />
+                </Grid>
 
+                <Grid size={12}>
+                    <Skeleton height={150} />
+                </Grid>
+                <Grid size={12}>
+                    <Skeleton height={14} />
+                </Grid>
+
+                <Grid size={3}>
+                    <Skeleton height={100} />
+                </Grid>
+                <Grid size={3}>
+                    <Skeleton height={100} />
+                </Grid>
+                <Grid size={3}>
+                    <Skeleton height={100} />
+                </Grid>
+                <Grid size={3}>
+                    <Skeleton height={100} />
+                </Grid>
+            </Grid>
+        </PageContainer>
     </>)
 }
 export default Home
