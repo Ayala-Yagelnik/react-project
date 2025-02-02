@@ -1,16 +1,14 @@
 import { TextField } from "@mui/material";
 
-interface TextFieldWithRefProps {
-  label: string;
-  name: string;
-  defaultValue: string;
-  inputRef: React.RefObject<HTMLInputElement | null>; 
-  required?: boolean;
-  error?: boolean;
-  helperText?: string;
-}
-
-const TextFieldWithRef: React.FC<TextFieldWithRefProps> = ({ label, name, defaultValue, inputRef, required = false, error, helperText }) => {
+const TextFieldWithRef= ({ label, name, defaultValue, inputRef, required = false, error, helperText }:{
+    label: string;
+    name: string;
+    defaultValue: string;
+    inputRef: React.RefObject<HTMLInputElement | null>; 
+    required?: boolean;
+    error?: boolean;
+    helperText?: string;
+  }) => {
   return (
     <TextField
       required={required}

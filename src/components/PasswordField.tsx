@@ -2,14 +2,12 @@ import { FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } fr
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import React, { useState } from 'react'; 
 
-interface PasswordFieldProps {
-  label: string;
-  inputRef: React.RefObject<HTMLInputElement | null>; 
-  error?: boolean; 
-  helperText?: string; 
-}
-
-const PasswordField: React.FC<PasswordFieldProps> = ({ label, inputRef, error = false, helperText }) => {
+const PasswordField= ({ label, inputRef, error = false, helperText }:{
+    label: string;
+    inputRef: React.RefObject<HTMLInputElement | null>; 
+    error?: boolean; 
+    helperText?: string; 
+  }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);

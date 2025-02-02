@@ -2,16 +2,14 @@ import { Box, TextField, IconButton, Typography, Button } from "@mui/material";
 import { Delete, Add } from "@mui/icons-material";
 import { UseFieldArrayRemove } from "react-hook-form";
 
-interface IngredientsListProps {
-  control: any;
-  register: any;
-  errors: any;
-  fields: any[]; 
-  append: (value: string) => void;
-  remove: UseFieldArrayRemove;
-}
-
-const IngredientsList: React.FC<IngredientsListProps> = ({ control, register, errors, fields, append, remove }) => {
+const IngredientsList = ({ control, register, errors, fields, append, remove }:{
+    control: any;
+    register: any;
+    errors: any;
+    fields: any[]; 
+    append: (value: string) => void;
+    remove: UseFieldArrayRemove;
+  }) => {
   return (
     <>
       <Typography variant="h6">Ingredients</Typography>
