@@ -56,8 +56,9 @@ const AddRecipe = ({ open, onClose }:{open: boolean; onClose: () => void; }) => 
         <IconButton onClick={handleClose} sx={{ position: 'absolute', right: 16, top: 16, bgcolor: 'red', color: 'white', '&:hover': { bgcolor: 'darkred' } }}>
           <Close />
         </IconButton>
-        <Typography sx={{ display: 'flex', justifyContent: 'center', width: '100%', mb: 2 }} variant="h6">Add Recipe</Typography>
+        <Typography sx={{ display: 'flex', justifyContent: 'center', width: '100%', my: 2 }} variant="h6">Add Recipe</Typography>
         <TextField
+        sx={{my: 2}}
           fullWidth
           id="title"
           label="Title"
@@ -65,6 +66,7 @@ const AddRecipe = ({ open, onClose }:{open: boolean; onClose: () => void; }) => 
           error={!!errors.title}
           helperText={errors.title?.message}/>
         <TextField
+        sx={{my: 2}}
           fullWidth
           id="description"
           label="Description"
@@ -81,6 +83,7 @@ const AddRecipe = ({ open, onClose }:{open: boolean; onClose: () => void; }) => 
           append={append}
           remove={remove}/>
         <TextField
+        sx={{my: 2}}
           fullWidth
           id="instructions"
           label="Instructions"
@@ -89,7 +92,7 @@ const AddRecipe = ({ open, onClose }:{open: boolean; onClose: () => void; }) => 
           {...register('instructions')}
           error={!!errors.instructions}
           helperText={errors.instructions?.message}/>
-        <Button type="submit" variant="contained" sx={{ display: 'flex', justifyContent: 'center', width: '100%', mb: 2, my: 2 }}>
+        <Button type="submit" variant="contained" sx={{ display: 'flex', justifyContent: 'center', width: '100%', my: 2 }}>
           Submit Recipe
         </Button>
       </Box>

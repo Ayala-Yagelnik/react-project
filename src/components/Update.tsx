@@ -52,7 +52,7 @@ const Update = () => {
 
   return (
     <>
-      <Button variant="text" sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpen}>Update user</Button>
+      <Button variant="outlined" sx={{ my: 2, color: 'black', display: 'block' }} onClick={handleOpen}>Update user</Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={popupStyle}>
           <Typography variant="h4" gutterBottom>UPDATE</Typography>

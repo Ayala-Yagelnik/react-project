@@ -11,4 +11,5 @@ export const popupStyle:SxProps={
       boxShadow: 24, 
       p: 4,
       overflow: 'auto', 
+      margin:'2px'
 }

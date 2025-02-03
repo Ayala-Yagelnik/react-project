@@ -1,29 +1,14 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { UserContext } from "./userReducer";
 import Update from "./Update";
 import PersonIcon from '@mui/icons-material/Person'; 
-
-function stringToColor(string: string) {
-    let hash = 0;
-    let i;
-    for (i = 0; i < string.length; i += 1) {
-        hash = string.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    let color = '#';
-
-    for (i = 0; i < 3; i += 1) {
-        const value = (hash >> (i * 8)) & 0xff;
-        color += `00${value.toString(16)}`.slice(-2);
-    }
-    return color;
-}
 
 function stringAvatar(firstName: string, lastName: string) {
     const initials = `${firstName[0]}${lastName ? lastName[0] : ''}`.toUpperCase(); 
     return {
         sx: {
-            bgcolor: stringToColor(firstName + lastName), 
+            bgcolor: '#6891d7', 
         },
         children: initials,
     };
@@ -31,10 +16,6 @@ function stringAvatar(firstName: string, lastName: string) {
 
 const UserAvatar = () => {
     const { user } = useContext(UserContext);
-
-    useEffect(() => {
-        console.log(user.id); 
-    }, [user]);
 
     const userName = user && user.firstName ? user.firstName : 'U';
     const lastName = user && user.lastName ? user.lastName : '';

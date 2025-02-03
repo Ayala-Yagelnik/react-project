@@ -14,14 +14,14 @@ const Nav = () => {
 
   return (
     <>
-        <AppBar position="sticky" >
+        <AppBar color='inherit' position="sticky" >
           <Toolbar style={{ justifyContent: 'flex-end' }}>
             <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
               {!login
-                && (<Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => { setSignup(true) }}>Sign up</Button>)
+                && (<Button sx={{ my: 2, color: '#e91e63', display: 'block' }} onClick={() => { setSignup(true) }}>Sign up</Button>)
               }
               {!login
-                && (<Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => { setSignin(true) }}>Sign in</Button>
+                && (<Button sx={{ my: 2, color: '#e91e63', display: 'block'}} onClick={() => { setSignin(true) }}>Sign in</Button>
                 )}
               {login
                 && <UserAvatar></UserAvatar>

@@ -23,7 +23,12 @@ const Login = ({ open1, onClose, actionType, onLogin }: { open1: boolean, onClos
 
   useEffect(() => setOpen(open1), [open1]);
 
-  const handleClose = () => { setOpen(false); onClose(); };
+  const handleClose = () => { setOpen(false); onClose(); 
+    if (emailRef.current) emailRef.current.value = ""; 
+    if (passwordRef.current) passwordRef.current.value = "";
+    setEmailError(null); 
+    setPasswordError(null); 
+  };
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const email = emailRef.current?.value || "";
