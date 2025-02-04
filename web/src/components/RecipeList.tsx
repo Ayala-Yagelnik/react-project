@@ -12,25 +12,13 @@ import RecipeCard from "./RecipeCard";
 import { pink } from "@mui/material/colors";
 import WelcomeRecipe from "./WelcomeRecipe";
 
-
-
 const RecipeList = () => {
 
     const dispatch = useDispatch<AppDispatch>();
-    const { user, userDispatch } = useContext(UserContext);
-    useEffect(() => {
-        console.log(user.id)
-    }, [user])
+    const { user } = useContext(UserContext);
     const [add, setAdd] = useState(false);
     const [recipe, setRecipe] = useState<Recipe | null>(null);
     const recipesList = useSelector((store: StoreType) => store.recipes.list);
-    useEffect(() => {
-        console.log('Current recipesList:', recipesList);
-    }, [recipesList]);
-
-    useEffect(() => {
-        console.log(user.id)
-    }, [userDispatch])
 
     useEffect(() => {
         dispatch(fetchRecipes())
@@ -39,13 +27,13 @@ const RecipeList = () => {
     const handleOpenCard = (recipe: Recipe) => {
         setRecipe(recipe)
     };
+
     return (
         <>
-            <Grid container spacing={{ xs: 2, md: 3 }}
-                sx={{ flexGrow: 1 }}>
+            <Grid container spacing={{ xs: 2, md: 3 }} sx={{ flexGrow: 1 }}>
                 <Grid size={12}>
                     <Button sx={{ margin: '10px' }} disabled={!user.id} onClick={() => { setAdd(true) }}>
-                        add recipe
+                        Add recipe
                     </Button>
                 </Grid>
                 <Grid sx={{ overflowY: 'scroll', maxHeight: '80vh', direction: "rtl" }} container spacing={2} size={{ xs: 12, sm: 5, md: 3 }}>
@@ -71,20 +59,15 @@ const RecipeList = () => {
                         ) : null
                     )}
                 </Grid>
-                    <Grid container spacing={4} sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                    }} size={{ xs: 12, sm: 7, md: 9 }}>
-                        {recipe ? (
-                            <RecipeCard recipe={recipe} />
-                        ) : (
-                            <WelcomeRecipe />
-                        )}
-                    </Grid>
-
+                <Grid container spacing={4} sx={{ display: 'flex', justifyContent: 'center', }} size={{ xs: 12, sm: 7, md: 9 }}>
+                    {recipe ? (
+                        <RecipeCard recipe={recipe} />
+                    ) : (
+                        <WelcomeRecipe />
+                    )}
+                </Grid>
             </Grid>
-            <AddRecipe open={add} onClose={() => { setAdd(false) }}></AddRecipe>
-
+            <AddRecipe open={add} onClose={() => { setAdd(false) }}/>
         </>
     )
 }

@@ -2,109 +2,75 @@
   "users": [
     {
       "id": 1,
-      "firstName": "name1",
-      "lastName": "name2",
-      "email": "n@n.com",
-      "password": "12345",
-      "address": "address 1 5",
-      "phone": "0548654321"
+      "email": "A@A.A",
+      "password": "Aa123456!",
+      "firstName": "A",
+      "lastName": "A",
+      "address": "A",
+      "phone": "A"
     },
     {
       "id": 1735048531744,
-      "email": "v@v.com",
-      "password": "123456",
-      "firstName": "rryyff",
-      "lastName": "12345",
-      "address": "mkm",
-      "phone": "098765432"
-    },
-    {
-      "id": 1735048561067,
-      "email": "r@r.com",
-      "password": "123456"
-    },
-    {
-      "id": 1735056076483,
-      "email": "g@g.com",
-      "password": "45678"
-    },
-    {
-      "id": 1735056158117,
-      "email": "g@f.c",
-      "password": "1223"
-    },
-    {
-      "id": 1735056199077,
-      "email": "ee",
-      "password": "1212"
-    },
-    {
-      "id": 1735056264012,
-      "email": "rut@gmail.com",
-      "password": "123456789",
-      "firstName": "nechama",
-      "lastName": "lerner",
-      "address": "bbb 3 4",
-      "phone": "098765432"
-    },
-    {
-      "id": 1735057311320,
-      "email": "yafa@gmail.com",
-      "password": "12345",
-      "firstName": "qwerty",
-      "lastName": "yyyy",
-      "address": "cfcfc",
-      "phone": "098765432"
-    },
-    {
-      "id": 1738078356337,
-      "email": "4",
-      "password": "4",
-      "firstName": "k",
-      "lastName": "k",
-      "address": "",
-      "phone": ""
+      "email": "B@B.B",
+      "password": "Bb123456!",
+      "firstName": "B",
+      "lastName": "B",
+      "address": "B",
+      "phone": "B"
     },
     {
       "id": 1738087528269,
-      "email": "SSS@SSS.SSS",
-      "password": "SSS",
-      "address": "ben yair 21 elad",
-      "phone": "0583245064",
-      "firstName": "אילי",
-      "lastName": "יגלניק"
+      "email": "C@C.C",
+      "password": "Cc123456!",
+      "firstName": "C",
+      "lastName": "C",
+      "address": "C",
+      "phone": "C"
     },
     {
-      "id": 1738183171993,
-      "email": "ZZZ@ZZZ.ZZZ",
-      "password": "ZZZ",
-      "firstName": "ZZZ",
-      "lastName": "",
-      "address": "",
-      "phone": ""
+      "id": 1738199819491,
+      "email": "D@D.D",
+      "password": "Dd123456!",
+      "firstName": "D",
+      "lastName": "D",
+      "address": "D",
+      "phone": "D"
     },
     {
-      "id": 1738453204672,
-      "email": "KKK@KKK.KKK",
-      "password": "123",
-      "firstName": "kkk",
-      "lastName": "kkk",
-      "address": "kkk",
-      "phone": "kkk"
+      "id": 1738199913206,
+      "email": "E@E.E",
+      "password": "Ee123456!",
+      "firstName": "E",
+      "lastName": "E",
+      "address": "E",
+      "phone": "E"
     },
     {
-      "id": 1738453656368,
-      "email": "eee@e.e",
-      "password": "ככ",
-      "firstName": "WWW",
-      "lastName": "RECIPES",
-      "address": "",
-      "phone": ""
+      "id": 1738231451073,
+      "email": "F@F.F",
+      "password": "Ff123456!",
+      "firstName": "F",
+      "lastName": "F",
+      "address": "F",
+      "phone": "F"
     },
     {
-      "id": 1738454272666,
-      "email": "",
-      "password": ""
+      "id": 1738266628741,
+      "email": "G@G.G",
+      "password": "Gg123456!",
+      "firstName": "G",
+      "lastName": "G",
+      "address": "G",
+      "phone": "G"
+    },
+    {
+      "id": 1738266638179,
+      "email": "H@H.H",
+      "password": "Hh123456!",
+      "firstName": "H",
+      "lastName": "H",
+      "address": "H",
+      "phone": "H"
     },
     {
       "id": 1738454699658,
@@ -133,9 +99,9 @@
       "authorId": 1,
       "ingredients": [
         "200g pasta",
-        "100ml cream",
+        "200ml cream",
         "50g parmesan cheese",
-        "1 clove garlic",
+        "2 cloves garlic",
         "Salt",
         "Pepper"
       ],
@@ -147,9 +113,10 @@
       "description": "Spicy and flavorful chicken curry",
       "authorId": 1,
       "ingredients": [
-        "500g chicken breast",
+        "500g chicken",
         "1 onion",
         "2 cloves garlic",
+        "1 tbsp curry powder",
         "400ml coconut milk",
         "Salt",
         "Pepper"
@@ -176,320 +143,138 @@
       "instructions": "Preheat the oven to 175°C (350°F). In a large bowl, mix the flour, sugar, cocoa powder, baking powder, and baking soda. Add the eggs, milk, oil, and vanilla extract, and mix until smooth. Gradually add the boiling water and mix until well combined. Pour the batter into a greased baking pan and bake for 30-35 minutes. Let cool before serving."
     },
     {
-      "id": 1738199819491,
-      "title": "d",
-      "description": "t",
+      "id": 4,
+      "title": "Caesar Salad",
+      "description": "Classic Caesar salad with homemade dressing",
+      "authorId": 1738487821177,
+      "ingredients": [
+        "1 head romaine lettuce",
+        "50g parmesan cheese",
+        "1 cup croutons",
+        "1 egg",
+        "2 cloves garlic",
+        "1 tsp Worcestershire sauce",
+        "1 tsp Dijon mustard",
+        "2 tbsp lemon juice",
+        "1/2 cup olive oil",
+        "Salt",
+        "Pepper"
+      ],
+      "instructions": "Chop the romaine lettuce and place in a large bowl. In a separate bowl, whisk together the egg, minced garlic, Worcestershire sauce, Dijon mustard, lemon juice, and olive oil until smooth. Season with salt and pepper. Pour the dressing over the lettuce and toss to coat. Top with grated parmesan cheese and croutons."
+    },
+    {
+      "id": 5,
+      "title": "Beef Stroganoff",
+      "description": "Tender beef in a creamy mushroom sauce",
       "authorId": 1735048531744,
       "ingredients": [
-        "hy"
+        "500g beef sirloin",
+        "1 onion",
+        "200g mushrooms",
+        "2 cloves garlic",
+        "1 cup beef broth",
+        "1 cup sour cream",
+        "2 tbsp flour",
+        "2 tbsp butter",
+        "Salt",
+        "Pepper"
       ],
-      "instructions": "hy"
+      "instructions": "Slice the beef into thin strips. In a large pan, melt the butter and sauté the chopped onion and garlic until golden. Add the beef strips and cook until browned. Add the sliced mushrooms and cook for another 5 minutes. Sprinkle the flour over the beef and mushrooms and stir to coat. Gradually add the beef broth, stirring constantly, until the sauce thickens. Stir in the sour cream and season with salt and pepper. Serve over egg noodles or rice."
     },
     {
-      "id": 1738199913206,
-      "title": "tt",
-      "description": "ttt",
-      "authorId": "1738087528269",
+      "id": 6,
+      "title": "Shakshuka",
+      "description": "Eggs poached in a spicy tomato sauce",
+      "authorId": 1738087528269,
       "ingredients": [
-        "t"
+        "1 onion",
+        "1 bell pepper",
+        "2 cloves garlic",
+        "400g canned tomatoes",
+        "4 eggs",
+        "1 tsp cumin",
+        "1 tsp paprika",
+        "Salt",
+        "Pepper",
+        "Fresh parsley"
       ],
-      "instructions": "tt"
+      "instructions": "Heat the oil in a pan and sauté the chopped onion, bell pepper, and garlic until softened. Add the canned tomatoes, cumin, and paprika, and simmer for 10 minutes. Make small wells in the sauce and crack the eggs into them. Cover the pan and cook until the eggs are set. Season with salt and pepper and garnish with fresh parsley."
     },
     {
-      "id": 1738231451073,
-      "title": "jmngf",
-      "description": "njgd\njyfj\nkhgjftgnjgv",
-      "authorId": "1",
+      "id": 7,
+      "title": "Falafel",
+      "description": "Crispy chickpea fritters",
+      "authorId": 1738199819491,
       "ingredients": [
-        "cbxf",
-        "fhgx",
-        "htreyhert"
+        "400g canned chickpeas",
+        "1 onion",
+        "2 cloves garlic",
+        "1 tsp cumin",
+        "1 tsp coriander",
+        "1 tsp baking powder",
+        "2 tbsp flour",
+        "Salt",
+        "Pepper",
+        "Fresh parsley",
+        "Oil for frying"
       ],
-      "instructions": "htgrjyfhtf"
+      "instructions": "Drain and rinse the chickpeas. In a food processor, combine the chickpeas, chopped onion, garlic, cumin, coriander, baking powder, flour, salt, pepper, and fresh parsley. Pulse until the mixture is well combined but still slightly chunky. Form the mixture into small balls and fry in hot oil until golden and crispy. Serve with pita bread and tahini sauce."
     },
     {
-      "id": 1738266628741,
-      "title": "oiuyuio",
-      "description": "kjui\njuhiijjii ui yui\nu ui yuiy iuiuoi\nyuui tyuoitf uyt\nuytry ytr yuhfdt",
-      "authorId": "1738087528269",
+      "id": 8,
+      "title": "Hummus",
+      "description": "Creamy chickpea dip",
+      "authorId": 1738199913206,
       "ingredients": [
-        "kyut",
-        "uytr"
+        "400g canned chickpeas",
+        "2 cloves garlic",
+        "2 tbsp tahini",
+        "2 tbsp lemon juice",
+        "1/4 cup olive oil",
+        "Salt",
+        "Paprika",
+        "Fresh parsley"
       ],
-      "instructions": "kkuytr uytyui o"
+      "instructions": "Drain and rinse the chickpeas. In a food processor, combine the chickpeas, garlic, tahini, lemon juice, and olive oil. Blend until smooth. Season with salt and garnish with paprika and fresh parsley. Serve with pita bread or vegetables."
     },
     {
-      "id": 1738266638179,
-      "title": "kyty",
-      "description": "kjui\njuhiijjii ui yui\nu ui yuiy iuiuoi\nyuui tyuoitf uyt\nuytry ytr yuhfdt",
-      "authorId": "1738087528269",
+      "id": 9,
+      "title": "Tabbouleh",
+      "description": "Fresh parsley and bulgur salad",
+      "authorId": 1738231451073,
       "ingredients": [
-        "kyut",
-        "uytr"
+        "1 cup bulgur wheat",
+        "2 cups boiling water",
+        "1 bunch fresh parsley",
+        "1 bunch fresh mint",
+        "2 tomatoes",
+        "1 cucumber",
+        "2 green onions",
+        "1/4 cup lemon juice",
+        "1/4 cup olive oil",
+        "Salt",
+        "Pepper"
       ],
-      "instructions": "kkuytr uytyui o"
+      "instructions": "Place the bulgur wheat in a bowl and pour the boiling water over it. Cover and let sit for 20 minutes, or until the bulgur is tender. Drain any excess water. Finely chop the parsley, mint, tomatoes, cucumber, and green onions. In a large bowl, combine the bulgur, chopped vegetables, lemon juice, and olive oil. Season with salt and pepper and toss to combine. Serve chilled."
     },
     {
-      "id": 1738279557108,
-      "title": "htr",
-      "description": "htr",
-      "authorId": "1738087528269",
+      "id": 10,
+      "title": "Baklava",
+      "description": "Sweet pastry with layers of nuts and honey",
+      "authorId": 1738266628741,
       "ingredients": [
-        "rthyrt"
+        "1 package phyllo dough",
+        "200g walnuts",
+        "200g pistachios",
+        "200g almonds",
+        "1 cup butter",
+        "1 cup honey",
+        "1 cup sugar",
+        "1 cup water",
+        "1 tsp cinnamon",
+        "1 tsp vanilla extract"
       ],
-      "instructions": "truehrth\ntrh\ntr\nhydtr\nutryhtdydrydtytr\nyrdtytr\n"
-    },
-    {
-      "id": 1738432782707,
-      "title": "וןטאר",
-      "description": "ןוטאאםפף\n",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "לחיע",
-        "לחי"
-      ],
-      "instructions": "ןוןטוןם\nחון"
-    },
-    {
-      "id": 1738432992683,
-      "title": "iuy",
-      "description": "kiuy",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "kui",
-        "p"
-      ],
-      "instructions": "jkuyt"
-    },
-    {
-      "id": 1738433090922,
-      "title": "jkhj",
-      "description": "mjkh",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "mjh"
-      ],
-      "instructions": "kljh"
-    },
-    {
-      "id": 1738433613724,
-      "title": "jhui",
-      "description": "iuy",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "kjuy"
-      ],
-      "instructions": "kjuy"
-    },
-    {
-      "id": 1738434366044,
-      "title": "ki",
-      "description": "ijui",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "jkyu"
-      ],
-      "instructions": "kjuy"
-    },
-    {
-      "id": 1738434483948,
-      "title": "SSS",
-      "description": "SSS",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "SSS"
-      ],
-      "instructions": "SSS"
-    },
-    {
-      "id": 1738434601526,
-      "title": "j",
-      "description": "jkuiy",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "mjk"
-      ],
-      "instructions": "kj"
-    },
-    {
-      "id": 1738435324133,
-      "title": "QQQ",
-      "description": "QQQ",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "QQQ",
-        "QQQ"
-      ],
-      "instructions": "QQQ"
-    },
-    {
-      "id": 1738436306509,
-      "title": "kliku",
-      "description": "iuyt",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "uiytr",
-        "uytr"
-      ],
-      "instructions": "kuyt"
-    },
-    {
-      "id": 1738436788434,
-      "title": "ון",
-      "description": "ןםו",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "ןםו"
-      ],
-      "instructions": "לח"
-    },
-    {
-      "id": 1738437409887,
-      "title": "ךלח",
-      "description": "לךחי",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "תח"
-      ],
-      "instructions": "ךלח"
-    },
-    {
-      "id": 1738437459353,
-      "title": "חןחל",
-      "description": "חלי",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "חלי",
-        "חי"
-      ],
-      "instructions": "לח"
-    },
-    {
-      "id": 1738437551657,
-      "title": "לךח",
-      "description": "לךח",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "לךחי"
-      ],
-      "instructions": "צחי"
-    },
-    {
-      "id": 1738437819432,
-      "title": "אאא",
-      "description": "אאא",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "אאא"
-      ],
-      "instructions": "אאא"
-    },
-    {
-      "id": 1738437926550,
-      "title": "ווו",
-      "description": "ווו",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "ווו"
-      ],
-      "instructions": "ווו"
-    },
-    {
-      "id": 1738447028550,
-      "title": "er",
-      "description": "trreqfjfjkdfmkfjerkljeklrjkerjklewjrklejrklejfdksfklsf\ndsfjkdsfjkdsf\ndsfkdsfjkldsf\ndsfjkldsjfkds\nfjkdsljfds\nfdsjkfds",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "grtw",
-        "htrw",
-        "re",
-        "fdsfds",
-        "fsdfsd"
-      ],
-      "instructions": "refsd fslaf idsf ioalfk;sdljfads'f\ndafjdjfkalsd f'sdafkd f'adfk d;lf d\nfjd fkldkjfl djfkdsjkfljdskfkhueifyeujfsdklflkdcnmnvmnfdkjvhiejfjkdsxkc dkjjd kfj dkj kdljcld fijdjfk,cj lzsjfildj fidjfkdj kjf jdkcj kd fidkjkcjfd ilkvj iflkdjlz jkljf lf jdlkjie fjielj kcdj ckjdkv jldkcjoidlj mckd fjcidlkcj dk"
-    },
-    {
-      "id": 1738449977652,
-      "title": "getr",
-      "description": "gtr",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "ge",
-        "e"
-      ],
-      "instructions": "gwtererqflkhuidkwklfu idiewd oeiud oeedjksxu cidskjew d\nedkoe idus;dis doiskldjui idh cdsijc dskckjdskch dsk ckdsc kds jckdsj ckdslcj ldskcj dsklcj dsklcjsdljc dskljc dsklcj dklc kd\n"
-    },
-    {
-      "id": 1738452733654,
-      "title": "לחי",
-      "description": "ךןו",
-      "authorId": "1738087528269",
-      "ingredients": [
-        "לחיע"
-      ],
-      "instructions": "לךח"
-    },
-    {
-      "id": 1738487875282,
-      "title": "nfgh",
-      "description": "nfghgf  hgfh gfhgf fhg gf",
-      "authorId": "1738487821177",
-      "ingredients": [
-        "hgfd",
-        "hgfd",
-        "hg"
-      ],
-      "instructions": "hgf hgf hgfdh hfgh dfgh fgdzshxh "
-    },
-    {
-      "id": 1738493695778,
-      "title": "bgd",
-      "description": "gdfgreb retg gtre",
-      "authorId": "1738487821177",
-      "ingredients": [
-        "re",
-        "ghre",
-        "htre"
-      ],
-      "instructions": "hgre"
-    },
-    {
-      "id": 1738493945229,
-      "title": "mhg",
-      "description": "jyf\nljhkmug\nkuy",
-      "authorId": "1738487821177",
-      "ingredients": [
-        "kjh",
-        "kuhj"
-      ],
-      "instructions": "kygjgjhgjfg"
-    },
-    {
-      "id": 1738496618276,
-      "title": "few",
-      "description": "few",
-      "authorId": "1738487821177",
-      "ingredients": [
-        "re",
-        "ghre",
-        "htre",
-        "dea",
-        "fewfew",
-        "few"
-      ],
-      "instructions": "fewvf rge gre greg ergv gvre gerg ger g regregvregrf erg er wefgewaewfdgbvcnbnmkuy ktu 6ty e5t r4w edf wadr rfwe fc gfgb fhtr rt6 yh5etty 4re3t 4r t  retgrtf gt reg  aderwr gh tyh yjkik ,iu,jghngf fdg dfds fwer rt t hgfh gnvhgnghvjyfd tr dr ur6d yur6t yxgst waete h jt kt vtv   efetgreg gre tgre tger ttg ertgfg fs jif isef iosefoiw a dolkcj oeiwdf uioawsj i rjewipo poasjf owieaj fdosjoies joies "
-    },
-    {
-      "id": 1738534410924,
-      "title": "klju",
-      "description": "jkhgf\nnjki\nkiu",
-      "authorId": "1738487821177",
-      "ingredients": [
-        "j",
-        "hjgfd",
-        "jhjhgf"
-      ],
-      "instructions": "jhyutr\nb"
+      "instructions": "Preheat the oven to 175°C (350°F). Finely chop the nuts and mix with the cinnamon. In a saucepan, melt the butter. Brush a baking dish with butter and layer half of the phyllo dough, brushing each sheet with butter. Spread the nut mixture over the dough and layer the remaining phyllo sheets, brushing each with butter. Cut into diamond shapes and bake for 45 minutes, or until golden. In a saucepan, combine the honey, sugar, water, and vanilla extract. Bring to a boil and simmer for 10 minutes. Pour the syrup over the hot baklava and let cool before serving."
     }
   ]
 }
