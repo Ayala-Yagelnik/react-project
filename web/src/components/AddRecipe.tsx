@@ -22,18 +22,15 @@ const AddRecipe = ({ open, onClose }:{open: boolean; onClose: () => void; }) => 
   });
 
   const [openForm, setOpenForm] = useState<boolean>(open);
-  useEffect(() => setOpenForm(open), [open]);
-
   const dispatch = useDispatch<AppDispatch>();
   const { user } = useContext(UserContext);
-
   const { control, handleSubmit, register, reset, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: { title: '', description: '', ingredients: [''], instructions: '' }
   });
-
   const { fields, append, remove } = useFieldArray({ control, name: "ingredients" });
-
+ 
+  useEffect(() => setOpenForm(open), [open]);
   const handleClose = () => {
     setOpenForm(false); onClose(); reset();
   };
@@ -99,5 +96,4 @@ const AddRecipe = ({ open, onClose }:{open: boolean; onClose: () => void; }) => 
     </Modal>
   );
 };
-
 export default AddRecipe;

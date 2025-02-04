@@ -15,7 +15,7 @@ const PasswordField= ({ label, inputRef, error = false, helperText }:{
   const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault();
 
   return (
-    <FormControl fullWidth margin="normal" variant="outlined" error={error}>  {/* הוספת error לקומפוננטה FormControl */}
+    <FormControl fullWidth margin="normal" variant="outlined" error={error}> 
       <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"

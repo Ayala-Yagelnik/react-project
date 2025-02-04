@@ -1,8 +1,11 @@
 import { Box, Typography } from "@mui/material"
 
 const Error=()=>{
+
     const imageUrl = './4.jpg';
+
 return(
+  
     <Box
       sx={{
         display: 'flex',

@@ -13,14 +13,17 @@ const initialState: userType = {
   phone: '',
   id: 0
 };
+
 const AppLayout = () => {
     const [state, dispatch] = useReducer(userReducer, initialState);
 
     return (<>
+
         <UserContext value={{ user: state, userDispatch: dispatch }}>
 
             <Nav />
             <Outlet />
+
         </UserContext>
 
     </>)
